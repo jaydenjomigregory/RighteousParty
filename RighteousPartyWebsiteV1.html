@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Righteous Party | Peachgrove Student Representation</title>
+    <!-- FontAwesome Icons & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-red: #bb1924;
+            --dark-red: #6e0c12;
+            --accent-gold: #d4af37;
+            --accent-gold-hover: #f3cf55;
+            --bg-dark: #0f0f12;
+            --card-bg: #18181c;
+            --card-hover: #222228;
+            --text-light: #f8f9fa;
+            --text-muted: #a0a0aa;
+            --border-color: #2a2a32;
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Open Sans', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--bg-dark); color: var(--text-light); font-family: var(--font-body); line-height: 1.6; }
+
+        h1, h2, h3, h4, .brand { font-family: var(--font-heading); }
+
+        /* Navigation Bar */
+        .navbar {
+            position: fixed; top: 0; width: 100%;
+            background-color: rgba(11, 11, 14, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0.8rem 6%; z-index: 1000;
+            border-bottom: 2px solid var(--primary-red);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+        }
+        .brand { font-size: 1.25rem; font-weight: 900; color: var(--text-light); letter-spacing: 1px; display: flex; align-items: center; gap: 12px; }
+        .brand-logo { height: 45px; width: auto; max-width: 150px; object-fit: contain; }
+        .nav-links { display: flex; list-style: none; gap: 25px; align-items: center; }
+        .nav-links a { color: var(--text-light); text-decoration: none; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px; transition: 0.3s; }
+        .nav-links a:hover { color: var(--accent-gold); }
+        .btn-watch { background: var(--primary-red); color: white; border: none; padding: 8px 18px; border-radius: 4px; font-weight: 700; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 8px; font-family: var(--font-heading); text-transform: uppercase; font-size: 0.8rem; }
+        .btn-watch:hover { background: #e0222f; transform: translateY(-2px); }
+
+        /* Hero Banner */
+        .hero {
+            min-height: 85vh; margin-top: 60px;
+            background: linear-gradient(180deg, rgba(15,15,18,0.7) 0%, rgba(15,15,18,0.95) 100%), 
+                        radial-gradient(circle at center, rgba(187,25,36,0.2) 0%, rgba(15,15,18,1) 70%);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; padding: 40px 20px; border-bottom: 1px solid var(--border-color);
+        }
+        .hero-badge { background: rgba(212, 175, 55, 0.1); border: 1px solid var(--accent-gold); color: var(--accent-gold); padding: 6px 16px; font-weight: 700; border-radius: 20px; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; }
+        .hero h1 { font-size: 3.8rem; font-weight: 900; line-height: 1.1; margin-bottom: 20px; text-transform: uppercase; letter-spacing: -1px; }
+        .hero h1 span { color: var(--primary-red); }
+        .hero-slogan { font-size: 1.4rem; max-width: 800px; color: var(--text-muted); font-style: italic; margin-bottom: 30px; font-weight: 400; }
+        .hero-cta { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
+        .btn-primary { background: var(--accent-gold); color: #000; padding: 14px 32px; font-weight: 800; border-radius: 4px; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; font-family: var(--font-heading); }
+        .btn-primary:hover { background: var(--accent-gold-hover); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(212,175,55,0.3); }
+        .btn-outline { background: transparent; color: var(--text-light); border: 2px solid var(--border-color); padding: 12px 28px; font-weight: 700; border-radius: 4px; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; font-family: var(--font-heading); }
+        .btn-outline:hover { border-color: var(--text-light); background: rgba(255,255,255,0.05); }
+
+        /* General Section Layout */
+        section { padding: 90px 8%; border-bottom: 1px solid var(--border-color); }
+        .section-header { text-align: center; max-width: 750px; margin: 0 auto 60px; }
+        .section-title { font-size: 2.4rem; font-weight: 900; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 1px; }
+        .section-title span { color: var(--primary-red); }
+        .section-subtitle { color: var(--text-muted); font-size: 1.05rem; }
+        .divider { width: 60px; height: 4px; background: var(--accent-gold); margin: 15px auto 0; }
+
+        /* Media / Video Spotlight Section */
+        .media-section { background: #131317; }
+        .video-card-container { max-width: 900px; margin: 0 auto; background: var(--card-bg); border-radius: 12px; border: 1px solid var(--border-color); overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .video-thumbnail-box { position: relative; width: 100%; height: 420px; background: linear-gradient(0deg, rgba(0,0,0,0.8), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80') center/cover; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
+        .play-btn { width: 80px; height: 80px; background: var(--primary-red); border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; font-size: 2rem; border: none; cursor: pointer; transition: 0.3s; box-shadow: 0 0 30px rgba(187,25,36,0.6); margin-bottom: 20px; }
+        .play-btn:hover { transform: scale(1.1); background: #e0222f; }
+        .video-details { padding: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; background: var(--card-bg); }
+        .video-text h3 { font-size: 1.4rem; color: var(--accent-gold); margin-bottom: 5px; }
+        .video-text p { color: var(--text-muted); font-size: 0.95rem; }
+
+        /* Comprehensive Policy Framework */
+        .policy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .policy-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 35px 30px; transition: 0.3s; position: relative; overflow: hidden; }
+        .policy-card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--primary-red); }
+        .policy-card:hover { transform: translateY(-5px); background: var(--card-hover); border-color: #3a3a46; }
+        .policy-icon { font-size: 2.2rem; color: var(--accent-gold); margin-bottom: 20px; }
+        .policy-card h3 { font-size: 1.35rem; margin-bottom: 12px; }
+        .policy-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px; line-height: 1.7; }
+        .policy-bullets { list-style: none; border-top: 1px solid var(--border-color); padding-top: 15px; }
+        .policy-bullets li { font-size: 0.88rem; color: var(--text-light); margin-bottom: 8px; display: flex; align-items: flex-start; gap: 10px; }
+        .policy-bullets li i { color: var(--accent-gold); margin-top: 4px; font-size: 0.8rem; }
+
+        /* Team Roster Grid */
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; }
+        .team-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 30px 20px; text-align: center; transition: 0.3s; }
+        .team-card:hover { border-color: var(--accent-gold); transform: translateY(-3px); }
+        .avatar-placeholder { width: 75px; height: 75px; background: rgba(255,255,255,0.05); border: 2px solid var(--primary-red); border-radius: 50%; margin: 0 auto 15px; display: flex; justify-content: center; align-items: center; font-size: 1.5rem; color: var(--accent-gold); }
+        .team-role { color: var(--primary-red); font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+        .team-name { font-size: 1.25rem; font-weight: 700; margin-bottom: 8px; }
+        .team-desc { font-size: 0.85rem; color: var(--text-muted); }
+
+        /* Speeches Section with Tabs */
+        .tabs-container { max-width: 900px; margin: 0 auto; }
+        .tab-buttons { display: flex; gap: 10px; justify-content: center; margin-bottom: 30px; flex-wrap: wrap; }
+        .tab-btn { background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-muted); padding: 12px 24px; font-weight: 700; cursor: pointer; border-radius: 4px; transition: 0.3s; font-family: var(--font-heading); }
+        .tab-btn.active, .tab-btn:hover { background: var(--primary-red); color: white; border-color: var(--primary-red); }
+        .tab-content { display: none; background: var(--card-bg); border: 1px solid var(--border-color); padding: 40px; border-radius: 8px; position: relative; }
+        .tab-content.active { display: block; }
+        .tab-content blockquote { font-size: 1.05rem; line-height: 1.8; color: #e0e0e0; font-style: italic; position: relative; z-index: 1; }
+        .speaker-meta { margin-top: 25px; border-top: 1px solid var(--border-color); padding-top: 15px; display: flex; justify-content: space-between; align-items: center; }
+        .speaker-name { font-weight: 800; color: var(--accent-gold); font-size: 1.1rem; }
+        .speaker-title { font-size: 0.85rem; color: var(--text-muted); }
+
+        /* Modal Player Window */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); backdrop-filter: blur(8px); justify-content: center; align-items: center; }
+        .modal-content { position: relative; width: 90%; max-width: 960px; height: 80vh; background: #000; border-radius: 8px; overflow: hidden; border: 1px solid var(--border-color); }
+        .close-modal { position: absolute; top: 15px; right: 20px; color: white; font-size: 2rem; cursor: pointer; z-index: 2001; }
+        .modal-content iframe { width: 100%; height: 100%; border: none; }
+
+        /* Footer */
+        footer { background: #09090b; padding: 50px 8% 30px; text-align: center; border-top: 1px solid var(--border-color); }
+        .footer-brand { font-size: 1.5rem; font-weight: 900; color: var(--accent-gold); margin-bottom: 10px; }
+        .footer-text { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 25px; }
+        .copyright { color: #555; font-size: 0.8rem; border-top: 1px solid #1a1a20; padding-top: 20px; margin-top: 20px; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            .video-thumbnail-box { height: 280px; }
+            .tab-content { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <nav class="navbar">
+    <div class="brand">
+    <img src="JaydenPartyLogo.png"
+         alt="The Righteous Party Logo"
+         class="brand-logo">
+    <span>THE RIGHTEOUS PARTY</span>
+</div>
+        <ul class="nav-links">
+            <li><a href="#policies">Policies</a></li>
+            <li><a href="#media">Presentation</a></li>
+            <li><a href="#team">Leadership</a></li>
+            <li><a href="#speeches">Speeches</a></li>
+        </ul>
+        <button class="btn-watch" onclick="openModal()">
+            <i class="fa-solid fa-circle-play"></i> Watch Video
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-badge">Peachgrove Intermediate Elections</div>
+        <h1>Think Big. Act Bold.<br><span>Go Righteous!</span></h1>
+        <p class="hero-slogan">"We want a bold, truth-telling, kind, and comforting political team! We will achieve all of our goals and stand together to fight for what is right."</p>
+        <div class="hero-cta">
+            <a href="#policies" class="btn-primary">Explore Our Platform</a>
+            <a href="javascript:void(0)" onclick="openModal()" class="btn-outline">Watch Full Video</a>
+        </div>
+    </section>
+
+    <!-- Video & Media Deck Section -->
+    <section id="media" class="media-section">
+        <div class="section-header">
+            <h2 class="section-title">Campaign <span>Video Deck</span></h2>
+            <p class="section-subtitle">Watch our official presentation and campaign manifesto directly from Google Drive.</p>
+            <div class="divider"></div>
+        </div>
+
+        <div class="video-card-container">
+            <div class="video-thumbnail-box">
+                <button class="play-btn" onclick="openModal()" title="Play Presentation">
+                    <i class="fa-solid fa-play"></i>
+                </button>
+                <h3 style="color: var(--text-light); font-size: 1.6rem; text-transform: uppercase;">The Righteous Party Campaign Video</h3>
+                <p style="color: var(--accent-gold);">Click to stream full slides & speech audio</p>
+            </div>
+            <div class="video-details">
+                <div class="video-text">
+                    <h3>Official Campaign Slides & Speeches</h3>
+                    <p>Includes complete leadership addresses by Jayden, Carel, and Franco.</p>
+                </div>
+                <a href="https://docs.google.com/videos/d/15fvp5M3Wo6o4CQVsalpHm5R0X43bAisDZB4KRBSQMJ4/edit?is_id=1CwVy1TzEO2hDo5GRCVLE4qpZvWcJtjvdicj0EZkHBtU&is_title=THE+RIGHTEOUS+PARTY&is_mt=application%2Fvnd.google-apps.punch&is_ph=205740&is_pw=365760&is_pc=9&is_psl=1%2C1%2C1%2C1%2C1%2C1%2C1%2C1%2C1&is_ep=punch_sidebar&is_rv=19227&is_rvatk=8gQCO-sW6KP06g&scene=id.g6e4a1360_0_1#scene=id.g6e4a1360_0_1" target="_blank" class="btn-outline" style="font-size: 0.8rem; padding: 10px 18px;">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Video Link
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comprehensive Policy Framework Section -->
+    <section id="policies">
+        <div class="section-header">
+            <h2 class="section-title">Our Detailed <span>Policies</span></h2>
+            <p class="section-subtitle">Real action over weak promises. Here is our exact blueprint for Peachgrove:</p>
+            <div class="divider"></div>
+        </div>
+
+        <div class="policy-grid">
+            <!-- Policy 1 -->
+            <div class="policy-card">
+                <div class="policy-icon"><i class="fa-solid fa-seedling"></i></div>
+                <h3>1. Next-Level Grounds & Wildlife</h3>
+                <p>We are dedicated to taking genuine pride in our school environment. Campus aesthetics directly impact student well-being and focus.</p>
+                <ul class="policy-bullets">
+                    <li><i class="fa-solid fa-check"></i> Plant vibrant floral gardens around key student common areas.</li>
+                    <li><i class="fa-solid fa-check"></i> Active maintenance and protection of local campus wildlife.</li>
+                    <li><i class="fa-solid fa-check"></i> Ensure clean, green, and elite grounds standard across Peachgrove.</li>
+                </ul>
+            </div>
+
+            <!-- Policy 2 -->
+            <div class="policy-card">
+                <div class="policy-icon"><i class="fa-solid fa-border-all"></i></div>
+                <h3>2. Focused Desk Layouts</h3>
+                <p>Every student deserves an environment free from constant classroom disruptions so they can unlock their full academic potential.</p>
+                <ul class="policy-bullets">
+                    <li><i class="fa-solid fa-check"></i> Push for separated individual desk setups in classrooms.</li>
+                    <li><i class="fa-solid fa-check"></i> Create dedicated zones for quiet concentration and lock-in work.</li>
+                    <li><i class="fa-solid fa-check"></i> Eliminate desk crowding to reduce unwanted distractions.</li>
+                </ul>
+            </div>
+
+            <!-- Policy 3 -->
+            <div class="policy-card">
+                <div class="policy-icon"><i class="fa-solid fa-volleyball"></i></div>
+                <h3>3. Pro-Tier Sports Gear</h3>
+                <p>No student should have to play with damaged, flat, or outdated sports equipment during PE or lunchtime breaks.</p>
+                <ul class="policy-bullets">
+                    <li><i class="fa-solid fa-check"></i> Replace all worn-out PE equipment with high-quality gear.</li>
+                    <li><i class="fa-solid fa-check"></i> Expand lunchtime sports gear availability across all year levels.</li>
+                    <li><i class="fa-solid fa-check"></i> Upgrade competitive equipment for school sports teams.</li>
+                </ul>
+            </div>
+
+            <!-- Policy 4 -->
+            <div class="policy-card">
+                <div class="policy-icon"><i class="fa-solid fa-bus-simple"></i></div>
+                <h3>4. Yearly School Trips</h3>
+                <p>Learning shouldn't be confined to a desk. We believe in practical, memorable experience-based outdoor education.</p>
+                <ul class="policy-bullets">
+                    <li><i class="fa-solid fa-check"></i> Schedule an awesome, hands-on school trip every single term.</li>
+                    <li><i class="fa-solid fa-check"></i> Ensure trip activities reward student hard work throughout the year.</li>
+                    <li><i class="fa-solid fa-check"></i> Guarantee equal access for all students across classes.</li>
+                </ul>
+            </div>
+
+            <!-- Policy 5 -->
+            <div class="policy-card">
+                <div class="policy-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
+                <h3>5. Anti-Bullying & Inclusion</h3>
+                <p>We stand firmly against "bandwagon hating" and social exclusion, replacing peer pressure with peace and harmony.</p>
+                <ul class="policy-bullets">
+                    <li><i class="fa-solid fa-check"></i> Zero-tolerance for targeting students based on personal preferences.</li>
+                    <li><i class="fa-solid fa-check"></i> Ensure every student feels heard by teachers and principal leadership.</li>
+                    <li><i class="fa-solid fa-check"></i> Create an inclusive culture where no one gets sidelined or judged.</li>
+                </ul>
+            </div>
+
+            <!-- Policy 6 -->
+            <div class="policy-card">
+                <div class="policy-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                <h3>6. Transparent Governance</h3>
+                <p>Rooted in our core mottos, we pledge honest representation and accountability to the entire student body.</p>
+                <ul class="policy-bullets">
+                    <li><i class="fa-solid fa-check"></i> Honor every policy platform commitment made during the election.</li>
+                    <li><i class="fa-solid fa-check"></i> Maintain open communication between leadership and Room 12.</li>
+                    <li><i class="fa-solid fa-check"></i> Live out our primary mandate: "First Learn To Serve."</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Roster Section -->
+    <section id="team" style="background: #131317;">
+        <div class="section-header">
+            <h2 class="section-title">Meet The <span>Leadership</span></h2>
+            <p class="section-subtitle">The dedicated team working together to take Peachgrove to the next level:</p>
+            <div class="divider"></div>
+        </div>
+
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="avatar-placeholder"><i class="fa-solid fa-crown"></i></div>
+                <div class="team-role">Party Leader</div>
+                <div class="team-name">Jayden Gregory</div>
+                <div class="team-desc">Standard-setter driving real action and student advocacy.</div>
+            </div>
+            <div class="team-card">
+                <div class="avatar-placeholder"><i class="fa-solid fa-user-tie"></i></div>
+                <div class="team-role">Vice Principal / Deputy</div>
+                <div class="team-name">Carel Tamang</div>
+                <div class="team-desc">Execution lead focused on results and environment standards.</div>
+            </div>
+            <div class="team-card">
+                <div class="avatar-placeholder"><i class="fa-solid fa-pen-nib"></i></div>
+                <div class="team-role">Secretary</div>
+                <div class="team-name">Te Amo Harris</div>
+                <div class="team-desc">Managing policy documentation and party communications.</div>
+            </div>
+            <div class="team-card">
+                <div class="avatar-placeholder"><i class="fa-solid fa-compass-drafting"></i></div>
+                <div class="team-role">Lead Builder & Design</div>
+                <div class="team-name">Noah Morgan</div>
+                <div class="team-desc">Spearheading design projects and infrastructure ideas.</div>
+            </div>
+            <div class="team-card">
+                <div class="avatar-placeholder"><i class="fa-solid fa-bullhorn"></i></div>
+                <div class="team-role">Campaign Officer</div>
+                <div class="team-name">Franco McQueen</div>
+                <div class="team-desc">Voice of anti-bullying, unity, and student culture.</div>
+            </div>
+            <div class="team-card">
+                <div class="avatar-placeholder"><i class="fa-solid fa-star"></i></div>
+                <div class="team-role">Team Executive</div>
+                <div class="team-name">Sefita</div>
+                <div class="team-desc">Core strategist advocating for classroom improvement.</div>
+            </div>
+            <div class="team-card">
+                <div class="avatar-placeholder"><i class="fa-solid fa-shield"></i></div>
+                <div class="team-role">Team Executive</div>
+                <div class="team-name">Marley Griffin</div>
+                <div class="team-desc">Student liaison supporting sports and grounds policies.</div>
+            </div>
+            <div class="team-card">
+                <div class="avatar-placeholder"><i class="fa-solid fa-user-check"></i></div>
+                <div class="team-role" style="color: var(--accent-gold);">Team Executive</div>
+                <div class="team-name">A-iesha Colbe</div>
+                <div class="team-desc">Promoting school culture and team initiatives.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Campaign Speeches (Interactive Tabs) -->
+    <section id="speeches">
+        <div class="section-header">
+            <h2 class="section-title">Campaign <span>Addresses</span></h2>
+            <p class="section-subtitle">Read the exact words delivered by our party leadership:</p>
+            <div class="divider"></div>
+        </div>
+
+        <div class="tabs-container">
+            <div class="tab-buttons">
+                <button class="tab-btn active" onclick="switchTab(event, 'speech-jayden')">Jayden Gregory</button>
+                <button class="tab-btn" onclick="switchTab(event, 'speech-carel')">Carel Tamang</button>
+                <button class="tab-btn" onclick="switchTab(event, 'speech-franco')">Franco McQueen</button>
+            </div>
+
+            <!-- Jayden's Speech -->
+            <div id="speech-jayden" class="tab-content active">
+                <blockquote>
+                    "Kia ora, Peachgrove! I'm Jayden, standing here for THE RIGHTEOUS PARTY. Franco just broke down why we need to drop the negativity and stop following the crowd. But as the leader of this party, I'm here to take things to the next level. I brought legendary standards with me to Room 12, and now it's time to bring that same high standard to the entire school.<br><br>
+                    When you back my leadership, you aren't getting weak promises. You are getting real action: Next-Level Grounds, Focused Classrooms, Pro-Tier Sports Gear, and Termly Trips. A real leader doesn't stand above you—I stand with you. Whether you're in Room 12 or anywhere else at Peachgrove, under my leadership, no one gets sidelined, no one gets judged, and everyone gets a voice that actually gets heard. Step up with us, back Room 12, and put your vote behind THE RIGHTEOUS PARTY! Tēnā koutou, tēnā koutou, tēnā koutou katoa!"
+                </blockquote>
+                <div class="speaker-meta">
+                    <div class="speaker-name">Jayden Gregory</div>
+                    <div class="speaker-title">Party Leader | Room 12</div>
+                </div>
+            </div>
+
+            <!-- Carel's Speech -->
+            <div id="speech-carel" class="tab-content">
+                <blockquote>
+                    "Kia ora, Peachgrove! My name is Carel, and I am proud to stand before you today representing THE RIGHTEOUS PARTY. You've heard the vision, and you've seen what's possible when we refuse to settle for average. But real change requires standard-setting leadership. I'm here to take everything we've talked about and turn it into real, undeniable results for every single student.<br><br>
+                    When you back my leadership, you aren't getting empty words. You are getting pure action: We're taking pride in our environment—upgrading outdoor spaces with fresh green gardens. We are pushing for setups that give you your own space to concentrate. No more broken balls or worn-out equipment. We aren't here to make up the numbers. Step up with us, trust the vision, and put your vote behind THE RIGHTEOUS PARTY!"
+                </blockquote>
+                <div class="speaker-meta">
+                    <div class="speaker-name">Carel Tamang</div>
+                    <div class="speaker-title">Vice Principal / Deputy Leader</div>
+                </div>
+            </div>
+
+            <!-- Franco's Speech -->
+            <div id="speech-franco" class="tab-content">
+                <blockquote>
+                    "So many people at this school hate on each other for being something that no one likes, but why can't we just live in peace and harmony? Well, that's because if it's popular to hate on that one thing, everyone will jump onto it just to hate. And when you ask them why, they'll most likely shrug and say, 'Well, uh, I don't know.'<br><br>
+                    But it's not just that me and my party are fighting for. We want to make this school a better place for everyone, no matter who you are or what you like. We promise various things... We also want everyone to feel like they have a voice. Your opinions matter, and together we can make changes that actually make school more enjoyable. So who is with me on this?! Let's work together, make a difference, and create a school we can all be proud of!"
+                </blockquote>
+                <div class="speaker-meta">
+                    <div class="speaker-name">Franco McQueen</div>
+                    <div class="speaker-title">Campaign Officer</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Modal Player -->
+    <div id="videoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <iframe id="slidesFrame" src="" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-brand">THE RIGHTEOUS PARTY</div>
+        <p class="footer-text">"First Learn To Serve" | Honest Government for Peachgrove Intermediate</p>
+        <div class="copyright">
+            &copy; 2026 The Righteous Party Campaign. Authorized by Jayden Gregory & Room 12 Leadership.
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Updated Video URL
+        const presentationEmbedURL = "https://docs.google.com/videos/d/15fvp5M3Wo6o4CQVsalpHm5R0X43bAisDZB4KRBSQMJ4/edit?is_id=1CwVy1TzEO2hDo5GRCVLE4qpZvWcJtjvdicj0EZkHBtU&is_title=THE+RIGHTEOUS+PARTY&is_mt=application%2Fvnd.google-apps.punch&is_ph=205740&is_pw=365760&is_pc=9&is_psl=1%2C1%2C1%2C1%2C1%2C1%2C1%2C1%2C1&is_ep=punch_sidebar&is_rv=19227&is_rvatk=8gQCO-sW6KP06g&scene=id.g6e4a1360_0_1#scene=id.g6e4a1360_0_1";
+
+        // Tab Switcher Script
+        function switchTab(evt, tabName) {
+            const tabContents = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+            const tabBtns = document.getElementsByClassName("tab-btn");
+            for (let i = 0; i < tabBtns.length; i++) {
+                tabBtns[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        // Modal Video Player Controls
+        function openModal() {
+            const modal = document.getElementById("videoModal");
+            const frame = document.getElementById("slidesFrame");
+            frame.src = presentationEmbedURL;
+            modal.style.display = "flex";
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("videoModal");
+            const frame = document.getElementById("slidesFrame");
+            frame.src = "";
+            modal.style.display = "none";
+        }
+
+        // Close modal when clicking outside content frame
+        window.onclick = function(event) {
+            const modal = document.getElementById("videoModal");
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
