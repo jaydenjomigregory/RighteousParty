@@ -153,9 +153,9 @@
             <li><a href="#team">Leadership</a></li>
             <li><a href="#speeches">Speeches</a></li>
         </ul>
-        <button class="btn-watch" onclick="openModal()">
-            <i class="fa-solid fa-circle-play"></i> Watch Video
-        </button>
+        <a href="https://docs.google.com/videos/d/1AAANtnHhoDudauOpFgEjos3n5G8kQ-GNHj8fYr1kgCg/edit?scene=id.g7231ebbf_0_21#scene=id.g7231ebbf_0_21" target="_blank" class="btn-outline" style="font-size: 0.8rem; padding: 10px 18px;">
+                    <i class="fa-solid fa-circle-play"></i> Watch Video
+                </a>
     </nav>
 
     <!-- Hero Section -->
@@ -165,7 +165,9 @@
         <p class="hero-slogan">"We want a bold, truth-telling, kind, and comforting political team! We will achieve all of our goals and stand together to fight for what is right."</p>
         <div class="hero-cta">
             <a href="#policies" class="btn-primary">Explore Our Platform</a>
-            <a href="javascript:void(0)" onclick="openModal()" class="btn-outline">Watch Full Video</a>
+            <a href="https://docs.google.com/videos/d/1AAANtnHhoDudauOpFgEjos3n5G8kQ-GNHj8fYr1kgCg/edit?scene=id.g7231ebbf_0_21#scene=id.g7231ebbf_0_21" target="_blank" class="btn-outline" style="font-size: 0.8rem; padding: 10px 18px;">
+                    <i class="fa-solid fa-circle-play"></i> Watch Full Video
+                </a>
         </div>
     </section>
 
@@ -179,9 +181,13 @@
 
         <div class="video-card-container">
             <div class="video-thumbnail-box">
-                <button class="play-btn" onclick="openModal()" title="Play Presentation">
+                <!-- <button class="play-btn" onclick="openModal()" title="Play Presentation">
                     <i class="fa-solid fa-play"></i>
-                </button>
+                </button> -->
+                <a href="https://docs.google.com/videos/d/15fvp5M3Wo6o4CQVsalpHm5R0X43bAisDZB4KRBSQMJ4/edit?is_id=1CwVy1TzEO2hDo5GRCVLE4qpZvWcJtjvdicj0EZkHBtU&is_title=THE+RIGHTEOUS+PARTY&is_mt=application%2Fvnd.google-apps.punch&is_ph=205740&is_pw=365760&is_pc=9&is_psl=1%2C1%2C1%2C1%2C1%2C1%2C1%2C1%2C1&is_ep=punch_sidebar&is_rv=19227&is_rvatk=8gQCO-sW6KP06g&scene=id.g6e4a1360_0_1#scene=id.g6e4a1360_0_1" target="_blank" class="btn-outline" style="font-size: 0.8rem; padding: 10px 18px;">
+                    <i class="fa-solid fa-play"></i> Play Presentation
+                </a>
+                
                 <h3 style="color: var(--text-light); font-size: 1.6rem; text-transform: uppercase;">The Righteous Party Campaign Video</h3>
                 <p style="color: var(--accent-gold);">Click to stream full slides & speech audio</p>
             </div>
@@ -190,7 +196,7 @@
                     <h3>Official Campaign Slides & Speeches</h3>
                     <p>Includes complete leadership addresses by Jayden, Carel, and Franco.</p>
                 </div>
-                <a href="https://docs.google.com/videos/d/15fvp5M3Wo6o4CQVsalpHm5R0X43bAisDZB4KRBSQMJ4/edit?is_id=1CwVy1TzEO2hDo5GRCVLE4qpZvWcJtjvdicj0EZkHBtU&is_title=THE+RIGHTEOUS+PARTY&is_mt=application%2Fvnd.google-apps.punch&is_ph=205740&is_pw=365760&is_pc=9&is_psl=1%2C1%2C1%2C1%2C1%2C1%2C1%2C1%2C1&is_ep=punch_sidebar&is_rv=19227&is_rvatk=8gQCO-sW6KP06g&scene=id.g6e4a1360_0_1#scene=id.g6e4a1360_0_1" target="_blank" class="btn-outline" style="font-size: 0.8rem; padding: 10px 18px;">
+                <a href="https://docs.google.com/videos/d/1AAANtnHhoDudauOpFgEjos3n5G8kQ-GNHj8fYr1kgCg/edit?scene=id.g7231ebbf_0_21#scene=id.g7231ebbf_0_21" target="_blank" class="btn-outline" style="font-size: 0.8rem; padding: 10px 18px;">
                     <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Video Link
                 </a>
             </div>
@@ -433,7 +439,7 @@
         function openModal() {
             const modal = document.getElementById("videoModal");
             const frame = document.getElementById("slidesFrame");
-            frame.src = presentationEmbedURL;
+            frame.src = "https://docs.google.com/videos/d/1AAANtnHhoDudauOpFgEjos3n5G8kQ-GNHj8fYr1kgCg/edit?scene=id.g7231ebbf_0_1#scene=id.g7231ebbf_0_1";
             modal.style.display = "flex";
         }
 
